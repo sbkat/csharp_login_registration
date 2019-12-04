@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using login_registration.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
 
 namespace login_registration.Controllers
 {
@@ -33,8 +35,11 @@ namespace login_registration.Controllers
             }
             else
             {
+                PasswordHasher<User> Hasher = new PasswordHasher<User>();
+                newUser.password = Hasher.HashPassword(newUser, newUser.password);
                 dbContext.Users.Add(newUser);
                 dbContext.SaveChanges();
+                HttpContext.Session.SetString("User", newUser.email);
                 return RedirectToAction("Success");
             }
         }
@@ -49,13 +54,25 @@ namespace login_registration.Controllers
         return View();
     }
     [HttpPost("login")]
-    public IActionResult Login(User existingUser)
+    public IActionResult Login(LoginUser existingUser)
     {
         if(ModelState.IsValid)
         {
             if(dbContext.Users.Any(user => user.email == existingUser.email))
             {
-                return RedirectToAction("Success");
+                User userInDb = dbContext.Users.FirstOrDefault(user => user.email == existingUser.email);
+                var hasher = new PasswordHasher<LoginUser>();
+                var result = hasher.VerifyHashedPassword(existingUser, userInDb.password, existingUser.password);
+                if(result == 0)
+                {
+                    ModelState.AddModelError("Email", "Invalid Email/Password");
+                    return View("Login");
+                }
+                else
+                {
+                    HttpContext.Session.SetString("User", existingUser.email);
+                    return RedirectToAction("Success");
+                }
             }
             else
             {
@@ -71,7 +88,19 @@ namespace login_registration.Controllers
     [HttpGet("success")]
     public IActionResult Success()
     {
-        return View();
+        if(HttpContext.Session.GetString("User")==null)
+        {
+            return RedirectToAction("Index");
+        }
+        else
+        {
+            return View();
+        }
+    }
+    public IActionResult Logout()
+    {
+        HttpContext.Session.Clear();
+        return RedirectToAction("Index");
     }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
