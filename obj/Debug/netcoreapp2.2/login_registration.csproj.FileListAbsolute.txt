@@ -15,7 +15,6 @@ C:\Users\Kathy\Desktop\Coding\Coding Dojo\csharp\login_registration\obj\Debug\ne
 C:\Users\Kathy\Desktop\Coding\Coding Dojo\csharp\login_registration\obj\Debug\netcoreapp2.2\login_registration.TagHelpers.output.cache
 C:\Users\Kathy\Desktop\Coding\Coding Dojo\csharp\login_registration\obj\Debug\netcoreapp2.2\login_registration.RazorCoreGenerate.cache
 C:\Users\Kathy\Desktop\Coding\Coding Dojo\csharp\login_registration\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs
-C:\Users\Kathy\Desktop\Coding\Coding Dojo\csharp\login_registration\obj\Debug\netcoreapp2.2\Razor\Views\Home\LoginPartial.g.cshtml.cs
 C:\Users\Kathy\Desktop\Coding\Coding Dojo\csharp\login_registration\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
 C:\Users\Kathy\Desktop\Coding\Coding Dojo\csharp\login_registration\obj\Debug\netcoreapp2.2\Razor\Views\Home\RegisterPartial.g.cshtml.cs
 C:\Users\Kathy\Desktop\Coding\Coding Dojo\csharp\login_registration\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs
@@ -30,3 +29,5 @@ C:\Users\Kathy\Desktop\Coding\Coding Dojo\csharp\login_registration\obj\Debug\ne
 C:\Users\Kathy\Desktop\Coding\Coding Dojo\csharp\login_registration\obj\Debug\netcoreapp2.2\login_registration.dll
 C:\Users\Kathy\Desktop\Coding\Coding Dojo\csharp\login_registration\obj\Debug\netcoreapp2.2\login_registration.pdb
 C:\Users\Kathy\Desktop\Coding\Coding Dojo\csharp\login_registration\obj\Debug\netcoreapp2.2\login_registration.csproj.CopyComplete
+C:\Users\Kathy\Desktop\Coding\Coding Dojo\csharp\login_registration\obj\Debug\netcoreapp2.2\Razor\Views\Home\Login.g.cshtml.cs
+C:\Users\Kathy\Desktop\Coding\Coding Dojo\csharp\login_registration\obj\Debug\netcoreapp2.2\Razor\Views\Home\Success.g.cshtml.cs

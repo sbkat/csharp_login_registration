@@ -5,37 +5,73 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using login_registration.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace login_registration.Controllers
 {
     public class HomeController : Controller
-    {[HttpGet("")]
+    {
+    private MyContext dbContext;
+    public HomeController(MyContext context)
+    {
+        dbContext = context;
+    }
+    [HttpGet("")]
     public IActionResult Index()
     {
         return View();
     }
     [HttpPost("register")]
-    public IActionResult Register(Register newUser)
+    public IActionResult Register(User newUser)
     {
         if(ModelState.IsValid)
         {
-            return RedirectToAction("Success");
+            if(dbContext.Users.Any(user => user.email == newUser.email))
+            {
+                ModelState.AddModelError("email", "Email is already registered.");
+                return View("Index");
+            }
+            else
+            {
+                dbContext.Users.Add(newUser);
+                dbContext.SaveChanges();
+                return RedirectToAction("Success");
+            }
         }
-        return View("Index");
+        else
+        {
+            return View("Index");
+        }
+    }
+    [HttpGet("login")]
+    public IActionResult Login()
+    {
+        return View();
     }
     [HttpPost("login")]
-    public IActionResult Login(Login existingUser)
+    public IActionResult Login(User existingUser)
     {
         if(ModelState.IsValid)
         {
-            return RedirectToAction("Success");
+            if(dbContext.Users.Any(user => user.email == existingUser.email))
+            {
+                return RedirectToAction("Success");
+            }
+            else
+            {
+                ModelState.AddModelError("email", "Email has not been registered.");
+                return View("Login");
+            }
         }
-        return View("Index");
+        else
+        {
+            return View("Login");
+        }
     }
     [HttpGet("success")]
-    public string Success()
+    public IActionResult Success()
     {
-        return "Welcome, you have successfully logged in!";
+        return View();
     }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
