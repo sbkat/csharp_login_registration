@@ -40,7 +40,7 @@ namespace login_registration.Controllers
                 dbContext.Users.Add(newUser);
                 dbContext.SaveChanges();
                 HttpContext.Session.SetString("User", newUser.email);
-                return RedirectToAction("Success");
+                return RedirectToAction("Dashboard");
             }
         }
         else
@@ -70,8 +70,8 @@ namespace login_registration.Controllers
                 }
                 else
                 {
-                    HttpContext.Session.SetString("User", existingUser.email);
-                    return RedirectToAction("Success");
+                    HttpContext.Session.SetString("User", userInDb.firstName);
+                    return RedirectToAction("Dashboard");
                 }
             }
             else
@@ -85,8 +85,8 @@ namespace login_registration.Controllers
             return View("Login");
         }
     }
-    [HttpGet("success")]
-    public IActionResult Success()
+    [HttpGet("dashboard")]
+    public IActionResult Dashboard()
     {
         if(HttpContext.Session.GetString("User")==null)
         {
@@ -94,6 +94,7 @@ namespace login_registration.Controllers
         }
         else
         {
+            ViewBag.User = HttpContext.Session.GetString("User");
             return View();
         }
     }

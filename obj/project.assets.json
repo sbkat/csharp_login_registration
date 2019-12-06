@@ -12155,11 +12155,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kathy\\Desktop\\Coding\\Coding Dojo\\csharp\\login_registration\\login_registration.csproj",
+      "projectUniqueName": "C:\\Users\\Kathy\\Desktop\\Coding\\Coding Dojo\\csharp\\bank_account\\login_registration.csproj",
       "projectName": "login_registration",
-      "projectPath": "C:\\Users\\Kathy\\Desktop\\Coding\\Coding Dojo\\csharp\\login_registration\\login_registration.csproj",
+      "projectPath": "C:\\Users\\Kathy\\Desktop\\Coding\\Coding Dojo\\csharp\\bank_account\\login_registration.csproj",
       "packagesPath": "C:\\Users\\Kathy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kathy\\Desktop\\Coding\\Coding Dojo\\csharp\\login_registration\\obj\\",
+      "outputPath": "C:\\Users\\Kathy\\Desktop\\Coding\\Coding Dojo\\csharp\\bank_account\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -68,3 +68,7 @@ a {
   float: right;
   margin: 20px;
 }
+
+html {
+  padding-top: 5vh;
+}
